@@ -1,5 +1,5 @@
 {
-  "name": "ja-kana-convert",
+  "name": "@inotom/ja-kana-convert",
   "version": "1.0.0",
   "description": "Convert hiragana/katakana string.",
   "main": "dist/index.js",
