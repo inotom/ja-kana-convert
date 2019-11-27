@@ -1,6 +1,6 @@
 {
   "name": "@inotom/ja-kana-convert",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Convert hiragana/katakana string.",
   "main": "dist/index.js",
   "cdn": "dist/ja-kana-convert.min.js",
@@ -33,6 +33,7 @@
     "jest": "24.9.0",
     "prettier": "1.19.1",
     "rollup": "1.27.4",
+    "rollup-plugin-babel": "4.3.3",
     "rollup-plugin-terser": "5.1.2"
   }
 }
