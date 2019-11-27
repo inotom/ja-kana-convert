@@ -25,5 +25,6 @@ export default {
       name: 'JaKanaConvert',
     },
   ],
+  external: ['core-js/modules/es.array.join', 'core-js/modules/es.array.map'],
   plugins,
 };
