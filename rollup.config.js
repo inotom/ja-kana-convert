@@ -1,8 +1,16 @@
 /** @prettier */
 
+import babel from 'rollup-plugin-babel';
 import { terser } from 'rollup-plugin-terser';
 
-const plugins = [terser()];
+const plugins = [
+  babel({
+    exclude: 'node_modules/**',
+    runtimeHelpers: true,
+    babelrc: true,
+  }),
+  terser(),
+];
 
 export default {
   input: './src/index.js',
