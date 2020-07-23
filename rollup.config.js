@@ -19,34 +19,25 @@ const banner = `/*! ${moduleName}.js v${pkg.version} ${pkg.author} | ${pkg.licen
 export default [
   // Options for browser.
   {
-    // エントリポイント
     input: 'src/index.ts',
     output: [
-      // minifyせずに出力する
       {
-        // exportされたモジュールを格納する変数
         name: moduleName,
-        // 出力先ファイル
         file: pkg.browser,
-        // ブラウザ用フォーマット
         format: 'iife',
-        // ソースマップをインラインで出力
         sourcemap: 'inline',
-        // copyright
         banner,
       },
-      // minifyして出力する
+      // minify.
       {
         name: moduleName,
-        // minifyするので.minを付与する
         file: pkg.browser.replace('.js', '.min.js'),
         format: 'iife',
         banner,
-        // minify用プラグインを追加で実行する
         plugins: [terser()],
       },
     ],
-    // 開発用モジュールは含めない
+    // Exclude development modules.
     external: [...Object.keys(pkg.devDependencies || {})],
     plugins: [resolve(), typescript(), commonjs({ extensions: ['.ts', '.js'] }), buble()],
   },
@@ -54,14 +45,14 @@ export default [
   {
     input: 'src/index.ts',
     output: [
-      // CommonJS用出力
+      // CommonJS
       {
         file: pkg.main,
         format: 'cjs',
         sourcemap: true,
         banner,
       },
-      // ESモジュール用出力
+      // ES Modules
       {
         file: pkg.module,
         format: 'es',
@@ -69,22 +60,8 @@ export default [
         banner,
       },
     ],
-    // 他モジュールは含めない
+    // Exclude other modules.
     external: [...Object.keys(pkg.dependencies || {}), ...Object.keys(pkg.devDependencies || {})],
     plugins: [resolve(), typescript(), commonjs({ extensions: ['.ts', '.js'] })],
   },
-  //input: './src/index.js',
-  //output: [
-  //  {
-  //    file: './dist/index.js',
-  //    format: 'cjs',
-  //  },
-  //  {
-  //    file: './dist/ja-kana-convert.min.js',
-  //    format: 'iife',
-  //    name: 'JaKanaConvert',
-  //  },
-  //],
-  //external: ['core-js/modules/es.array.join', 'core-js/modules/es.array.map'],
-  //plugins,
 ];
