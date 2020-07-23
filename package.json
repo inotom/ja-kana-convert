@@ -9,7 +9,7 @@
     "dist",
     "src"
   ],
-  "types": "dist/index.d.ts",
+  "typings": "dist/index.d.ts",
   "scripts": {
     "prebuild": "rimraf dist/*.js dist/*.map dist/*.d.ts && npm run clean && npm test && npm run types",
     "build": "NODE_ENV=production npx rollup -c",
