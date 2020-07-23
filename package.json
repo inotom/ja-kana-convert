@@ -5,11 +5,11 @@
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "browser": "dist/ja-kana-convert.js",
+  "cdn": "dist/ja-kana-convert.min.js",
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
-  "typings": "dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
     "prebuild": "rimraf dist/*.js dist/*.map dist/*.d.ts && npm run clean && npm test && npm run types",
     "build": "NODE_ENV=production npx rollup -c",
