@@ -4,7 +4,7 @@
   "description": "Convert hiragana/katakana string.",
   "main": "dist/index.js",
   "types": "types/index.d.ts",
-  "module": "dist/index.mjs",
+  "module": "dist/index.es.js",
   "browser": "dist/ja-kana-convert.js",
   "files": [
     "dist",

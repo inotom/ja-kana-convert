@@ -48,4 +48,4 @@ exports.toKatakana = (str) => convertTo(str, exports.HiraganaToKatakana);
 });
 
 export default src;
-//# sourceMappingURL=index.mjs.map
+//# sourceMappingURL=index.es.js.map
