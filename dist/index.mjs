@@ -1,8 +1,4 @@
 /*! JaKanaConvert.js v2.0.0 inotom (http://www.serendip.ws/) | MIT */
-'use strict';
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
 /** @prettier */
 const isKatakana = (c) => {
     const code = c.charCodeAt(0);
@@ -32,10 +28,5 @@ const convertTo = (str, fn) => Array.prototype.map.call(str, fn).join('');
 const toHiragana = (str) => convertTo(str, KatakanaToHiragana);
 const toKatakana = (str) => convertTo(str, HiraganaToKatakana);
 
-exports.HiraganaToKatakana = HiraganaToKatakana;
-exports.KatakanaToHiragana = KatakanaToHiragana;
-exports.isHiragana = isHiragana;
-exports.isKatakana = isKatakana;
-exports.toHiragana = toHiragana;
-exports.toKatakana = toKatakana;
-//# sourceMappingURL=index.js.map
+export { HiraganaToKatakana, KatakanaToHiragana, isHiragana, isKatakana, toHiragana, toKatakana };
+//# sourceMappingURL=index.mjs.map

@@ -5,13 +5,19 @@
 <title></title>
 </head>
 <body>
-<script src="./ja-kana-convert.min.js"></script>
+<script src="./ja-kana-convert.js"></script>
 <script>
 (function() {
   'use strict';
   console.log(JaKanaConvert.toKatakana('ひらがなをカタカナに'));
   console.log(JaKanaConvert.toHiragana('カタカナをひらがなに'));
+
 })();
+</script>
+<script type="module">
+  import { toKatakana, toHiragana } from './index.mjs';
+  console.log(toKatakana('ひらがなをカタカナに'));
+  console.log(toHiragana('カタカナをひらがなに'));
 </script>
 </body>
 </html>
