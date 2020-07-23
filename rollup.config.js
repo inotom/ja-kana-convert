@@ -62,6 +62,12 @@ export default [
     ],
     // Exclude other modules.
     external: [...Object.keys(pkg.dependencies || {}), ...Object.keys(pkg.devDependencies || {})],
-    plugins: [resolve(), typescript(), commonjs({ extensions: ['.ts', '.js'] })],
+    plugins: [
+      typescript({
+        useTsconfigDeclarationDir: true,
+      }),
+      commonjs(),
+      resolve(),
+    ],
   },
 ];
