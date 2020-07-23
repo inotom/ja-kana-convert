@@ -4,4 +4,3 @@
 *.log
 *.lock
 /node_modules
-/dist
