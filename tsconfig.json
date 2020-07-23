@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es2015",
-    "module": "es2015",
+    "target": "es5",
+    "module": "esnext",
     "moduleResolution": "node",
     "strict": true,
     "baseUrl": "./src/",
@@ -12,7 +12,6 @@
     "outDir": "./dist",
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "newLine": "lf",
     "forceConsistentCasingInFileNames": true
   },
   "include": ["src/**/*"],

@@ -52,9 +52,22 @@ export default [
         sourcemap: true,
         banner,
       },
+      // ES Modules
+      {
+        file: pkg.module,
+        format: 'es',
+        sourcemap: true,
+        banner,
+      },
     ],
     // Exclude other modules.
     external: [...Object.keys(pkg.dependencies || {}), ...Object.keys(pkg.devDependencies || {})],
-    plugins: [resolve(), typescript(), commonjs({ extensions: ['.ts', '.js'] }), buble()],
+    plugins: [
+      typescript({
+        useTsconfigDeclarationDir: true,
+      }),
+      commonjs(),
+      resolve(),
+    ],
   },
 ];

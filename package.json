@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "description": "Convert hiragana/katakana string.",
   "main": "dist/index.js",
+  "module": "dist/index.esm.js",
   "browser": "dist/ja-kana-convert.js",
   "files": [
     "dist",
