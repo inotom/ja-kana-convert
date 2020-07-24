@@ -12,9 +12,10 @@ import upperFirst from 'lodash.upperfirst';
 import pkg from './package.json';
 
 // Remove npm package scope.
-const moduleName = upperFirst(camelCase(pkg.name.replace(/^\@.*\//, '')));
+const unscopedName = pkg.name.replace(/^\@.*\//, '');
+const moduleName = upperFirst(camelCase(unscopedName));
 
-const banner = `/*! ${moduleName}.js v${pkg.version} ${pkg.author} | ${pkg.license} */`;
+const banner = `/*! ${unscopedName}.js v${pkg.version} ${pkg.author} | ${pkg.license} License */`;
 
 export default [
   // Options for browser.
@@ -23,7 +24,7 @@ export default [
     output: [
       {
         name: moduleName,
-        file: pkg.browser,
+        file: pkg.unpkg,
         format: 'iife',
         sourcemap: 'inline',
         banner,
@@ -31,7 +32,7 @@ export default [
       // minify.
       {
         name: moduleName,
-        file: pkg.browser.replace('.js', '.min.js'),
+        file: pkg.unpkg.replace('.js', '.min.js'),
         format: 'iife',
         banner,
         plugins: [terser()],

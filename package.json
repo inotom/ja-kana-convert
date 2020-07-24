@@ -2,10 +2,10 @@
   "name": "@inotom/ja-kana-convert",
   "version": "2.0.0",
   "description": "Convert hiragana/katakana string.",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
-  "browser": "dist/ja-kana-convert.js",
-  "cdn": "dist/ja-kana-convert.min.js",
+  "unpkg": "dist/ja-kana-convert.js",
+  "jsdelivr": "dist/ja-kana-convert.js",
   "files": [
     "dist"
   ],
@@ -24,7 +24,7 @@
     "url": "git+https://github.com/inotom/ja-kana-convert.git"
   },
   "keywords": [],
-  "author": "inotom (http://www.serendip.ws/)",
+  "author": "inotom (https://www.serendip.ws/)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/inotom/ja-kana-convert/issues"
