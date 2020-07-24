@@ -1,30 +1,68 @@
 /** @prettier */
 
-import babel from 'rollup-plugin-babel';
+import resolve from '@rollup/plugin-node-resolve';
+import typescript from 'rollup-plugin-typescript2';
+import commonjs from '@rollup/plugin-commonjs';
+import buble from '@rollup/plugin-buble';
 import { terser } from 'rollup-plugin-terser';
 
-const plugins = [
-  babel({
-    exclude: 'node_modules/**',
-    runtimeHelpers: true,
-    babelrc: true,
-  }),
-  terser(),
-];
+import camelCase from 'lodash.camelcase';
+import upperFirst from 'lodash.upperfirst';
 
-export default {
-  input: './src/index.js',
-  output: [
-    {
-      file: './dist/index.js',
-      format: 'cjs',
-    },
-    {
-      file: './dist/ja-kana-convert.min.js',
-      format: 'iife',
-      name: 'JaKanaConvert',
-    },
-  ],
-  external: ['core-js/modules/es.array.join', 'core-js/modules/es.array.map'],
-  plugins,
-};
+import pkg from './package.json';
+
+// Remove npm package scope.
+const unscopedName = pkg.name.replace(/^\@.*\//, '');
+const moduleName = upperFirst(camelCase(unscopedName));
+
+const banner = `/*! ${unscopedName}.js v${pkg.version} ${pkg.author} | ${pkg.license} License */`;
+
+export default [
+  // Options for browser.
+  {
+    input: 'src/index.ts',
+    output: [
+      {
+        name: moduleName,
+        file: pkg.unpkg,
+        format: 'iife',
+        sourcemap: 'inline',
+        banner,
+      },
+      // minify.
+      {
+        name: moduleName,
+        file: pkg.unpkg.replace('.js', '.min.js'),
+        format: 'iife',
+        banner,
+        plugins: [terser()],
+      },
+    ],
+    // Exclude development modules.
+    external: [...Object.keys(pkg.devDependencies || {})],
+    plugins: [resolve(), typescript(), commonjs({ extensions: ['.ts', '.js'] }), buble()],
+  },
+  // Options for module.
+  {
+    input: 'src/index.ts',
+    output: [
+      // CommonJS
+      {
+        file: pkg.main,
+        format: 'cjs',
+        sourcemap: true,
+        banner,
+      },
+      // ES Modules
+      {
+        file: pkg.module,
+        format: 'es',
+        sourcemap: true,
+        banner,
+      },
+    ],
+    // Exclude other modules.
+    external: [...Object.keys(pkg.dependencies || {}), ...Object.keys(pkg.devDependencies || {})],
+    plugins: [resolve(), typescript(), commonjs({ extensions: ['.ts', '.js'] }), buble()],
+  },
+];

@@ -1,26 +1,20 @@
 /** @prettier */
-/* global test expect */
 
-import {
-  isKatakana,
-  isHiragana,
-  toKatakana,
-  toHiragana,
-} from '../src/index.js';
+import { isKatakana, isHiragana, toKatakana, toHiragana } from '#/index.ts';
 
 const katakanaChars =
   'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンヴガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポァィゥェォッャュョヮ';
 const hiraganaChars =
   'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんゔがぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽぁぃぅぇぉっゃゅょゎ';
 
-katakanaChars.split('').forEach(c => {
+katakanaChars.split('').forEach((c) => {
   test(`カタカナ「${c}」の判別`, () => {
     expect(isKatakana(c)).toBeTruthy();
     expect(isHiragana(c)).toBeFalsy();
   });
 });
 
-hiraganaChars.split('').forEach(c => {
+hiraganaChars.split('').forEach((c) => {
   test(`ひらがな「${c}」の判別`, () => {
     expect(isHiragana(c)).toBeTruthy();
     expect(isKatakana(c)).toBeFalsy();
