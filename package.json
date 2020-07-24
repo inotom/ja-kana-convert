@@ -1,6 +1,6 @@
 {
   "name": "@inotom/ja-kana-convert",
-  "version": "2.0.0-beta.1",
+  "version": "2.0.0",
   "description": "Convert hiragana/katakana string.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
